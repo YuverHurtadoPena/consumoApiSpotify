@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ServicioService } from 'src/app/servicios/servicio.service';
 import Swal from 'sweetalert2';
+import { FormAddItemComponent } from '../form-add-item/form-add-item.component';
 
 @Component({
   selector: 'app-add-music',
@@ -14,12 +16,23 @@ export class AddMusicComponent implements OnInit {
   isEmpty = true;
   track: any[] = [];
 
-  constructor(service:ServicioService,router: Router) {
+  constructor(service:ServicioService,router: Router,public openModal: MatDialog) {
     this.service=service
     this.router = router;
   }
 
   ngOnInit(): void {
+  }
+
+  openDialog(uri:string) {
+    this.openModal.open(FormAddItemComponent, {
+      data: {
+        uri:uri
+      },
+      width: '400px',
+
+
+    });
   }
 
 search(searchName:string){
@@ -37,7 +50,7 @@ search(searchName:string){
 
       },
       error:(err)=>{
-        Swal.fire('Error!', 'Se debe actualizar el token!', 'error');
+        Swal.fire('Error!', 'Se debe actualizar el token, dar  click en inicio!', 'error');
       },
     });
   }

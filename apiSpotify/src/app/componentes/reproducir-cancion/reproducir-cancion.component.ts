@@ -14,7 +14,6 @@ export class ReproducirCancionComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
 
 

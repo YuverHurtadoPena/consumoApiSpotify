@@ -16,6 +16,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { ListitemsComponent } from './componentes/listitems/listitems.component';
 import { ReproducirCancionComponent } from './componentes/reproducir-cancion/reproducir-cancion.component';
 import { AddMusicComponent } from './componentes/add-music/add-music.component';
+import { FormAddItemComponent } from './componentes/form-add-item/form-add-item.component';
+import { FormUpdateTokenComponent } from './componentes/form-update-token/form-update-token.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AddMusicComponent } from './componentes/add-music/add-music.component';
     HeaderComponent,
     ListitemsComponent,
     ReproducirCancionComponent,
-    AddMusicComponent
+    AddMusicComponent,
+    FormAddItemComponent,
+    FormUpdateTokenComponent
   ],
   imports: [
     BrowserModule,

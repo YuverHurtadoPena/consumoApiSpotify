@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ServicioService } from 'src/app/servicios/servicio.service';
 import Swal from 'sweetalert2';
 import { ReproducirCancionComponent } from '../reproducir-cancion/reproducir-cancion.component';
+import { BoryAddItem } from 'src/app/dto/bory-add-item';
 
 @Component({
   selector: 'app-listitems',
@@ -16,6 +17,7 @@ export class ListitemsComponent implements OnInit {
   private service: ServicioService;
 
   track: any[] = [];
+  dat:string[]=[];
 
   idPlayList = '';
   limitInit = 0;
@@ -42,6 +44,40 @@ export class ListitemsComponent implements OnInit {
 
 
     });
+  }
+
+  delete(uri:string){
+    const id = localStorage.getItem('idPlayList');
+    Swal.fire({
+      title: 'desea eliminar la cancion?',
+      text: "Tenga presente que esta acción no se puede deshacer!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eleiminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dat.push(uri)
+        const dato:BoryAddItem ={
+          uris:this.dat
+        }
+       this.service.deleteItem(id, dato).subscribe({
+        next:(data)=>{
+          this.getItems();
+          Swal.fire(
+            'Exito!',
+            'La cancion se elimino con exito!',
+            'success'
+          )
+        },
+        error:(err)=>{
+          Swal.fire('Error!', 'Se debe actualizar el token, dar  click en inicio!', 'error');
+        }
+
+       })
+      }
+    })
   }
 
   getItems() {

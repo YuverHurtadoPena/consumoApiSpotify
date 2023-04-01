@@ -53,11 +53,7 @@ export class FormCreatePlayListComponent implements OnInit {
           this.service.notifier.next(true);
         },
         error:(err)=>{
-          Swal.fire(
-            'Error!',
-            'No se pudo crear la lista!',
-            'error'
-          )
+          Swal.fire('Error!', 'Se debe actualizar el token, dar  click en inicio!', 'error');
 
           console.log(err)
         }

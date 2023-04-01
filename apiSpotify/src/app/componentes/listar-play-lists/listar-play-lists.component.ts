@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoPlaylist } from 'src/app/dto/info-playlist';
-import { BodyPlayList } from 'src/app/dto/body-play-list';
+
 import { ServicioService } from 'src/app/servicios/servicio.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { FormCreatePlayListComponent } from '../form-create-play-list/form-create-play-list.component';
+import { BodyPlayList } from 'src/app/dto/body-play-list';
+import { FormUpdateTokenComponent } from '../form-update-token/form-update-token.component';
 
 @Component({
   selector: 'app-listar-play-lists',
@@ -18,7 +20,7 @@ export class ListarPlayListsComponent implements OnInit {
   private infoPlaylist!:InfoPlaylist;
   bodyPlayList:BodyPlayList[]=[];
 
-  constructor(service:ServicioService,router: Router,public openModal: MatDialog,) {
+  constructor(service:ServicioService,router: Router,public openModal: MatDialog,public open: MatDialog) {
     this.service=service
     this.router = router;
   }
@@ -50,6 +52,7 @@ this.getAllData();
       },
       error:(err)=>{
         console.log(err)
+        this.openDialogM();
       }
     })
   }
@@ -62,10 +65,23 @@ this.getAllData();
 
   openDialog() {
     this.router.navigate(["/principal"]);
+
     this.openModal.open(FormCreatePlayListComponent, {
       data: {},
       width: '420px',
       height: '310px',
     });
   }
+
+  openDialogM() {
+
+    this.open.open(FormUpdateTokenComponent, {
+      data: {},
+      width: '420px',
+
+    });
+  }
+
+
+
 }
