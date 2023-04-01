@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<div id="managerTask">
+  <input class="buscar"  type="search" placeholder="nombre cancion"  #searchByName (keyup)="search(searchByName.value)">
+  <div class="scroll" *ngIf="!isEmpty" style="margin-top: -180px;" >
+
+    <div *ngFor="let item of track" class="infoPersonaje " >
+      <div>
+        <img src="{{item.album.images[0].url}}" alt="" class="imagen" />
+      </div>
+      <div >
+
+        <strong>Cancion: </strong>
+        <label for="">{{ item.name }}</label><br />
+
+        <strong >CANTANTES: </strong><br>
+
+        <div *ngFor="let c of item.artists">
+          <strong>Nombre: </strong>
+          <label for="">{{ c.name }}</label><br />
+
+        </div>
+        <audio src="{{item.preview_url}}" controls></audio>
+        <div >
+          <div style="display: inline-flex; margin: auto;">
+
+            <button  style="display: inline-flex;"class="save" mat-button><mat-icon>add_circle</mat-icon><h3>Añadir</h3></button>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="isEmpty">
+    <strong>Sin informacion</strong>
+  </div>
+
+
+</div>

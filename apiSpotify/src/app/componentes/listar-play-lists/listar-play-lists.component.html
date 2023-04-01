@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div  id="managerTask">
+
+
+  <div  class="responsive ">
+  <h1 class="title" >LISTA DE PLAYLIST</h1>
+  <div class="scroll">
+    <button class="button-create-list" (click)="openDialog()">Crear playlist</button>
+    <table id="tabla"  >
+
+      <th class="th_left">Nombre</th>
+      <th class="th_left"> Descripción</th>
+      <th class="th_left">Visibilidad</th>
+      <th class="th_left">Acción</th>
+
+      <tr *ngFor="let item of bodyPlayList" >
+
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.public?'Publica':'privada'}}</td>
+        <td>
+          <button  style="--bs-btn-padding-x: 0.2rem !important;
+          --bs-btn-padding-y: 0.2rem !important;" type="button" class="btn btn-success boton" (click)="goToItems(item.id)" >Gestion</button>
+
+        </td>
+      </tr>
+
+    </table>
+
+  </div>
+    </div>
+
+  </div>

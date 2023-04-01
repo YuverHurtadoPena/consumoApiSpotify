@@ -1,0 +1,32 @@
+<div id="managerTask">
+  <h1 class="title" >Reproductor de musica</h1>
+
+
+  <div >
+
+    <div class="infoPersonaje ">
+      <div>
+        <img src="{{data.imagen}}" alt="" class="imagen" />
+      </div>
+      <div >
+
+        <strong>Cancion: </strong>
+        <label for="">{{ data.cancion }}</label><br />
+        <strong>Album: </strong>
+        <label for="">{{ data.album }}</label><br />
+        <audio src="{{data.audio}}" controls></audio>
+
+        <div >
+          <div style="display: inline-flex; margin: auto;">
+            <button class="cerrar" style="display: inline-flex;" mat-button [mat-dialog-close]="true">	<mat-icon>cancel</mat-icon><h3>Cerrar</h3></button>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
